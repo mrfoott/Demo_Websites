@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/admin">WebSiteName</a>
+            </div>
+
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/admin/post">Posts</a></li>
+                <li><a href="/admin/user">Users</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="card-body">
+        <div class="table-responsive">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="/admin/post/new" class="btn btn-success pull-right">Add new post</a>
+                </div>
+            </div>
+
+            <div class="panel-heading">
+                Posts
+            </div>
+
+            <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                            <thead>
+                                <tr>
+                                    <th rowspan="1" colspan="1">ID</th>
+                                    <th rowspan="1" colspan="1">Title</th>
+                                    <th rowspan="1" colspan="1">Content</th>
+                                    <th rowspan="1" colspan="1">Author</th>
+                                    <th rowspan="1" colspan="1">Created Time</th>
+                                    <th rowspan="1" colspan="1">Updated Time</th>
+                                    <th rowspan="1" colspan="1">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (data && data.posts) {%>
+                                    <% for(var i = 0; i < data.posts.length; i++) {%>
+                                    <tr>
+                                        <td> <%= data.posts[i].id%> </td>
+                                        <td> <%= data.posts[i].title%> </td>
+                                        <td> <%= data.posts[i].content%> </td>
+                                        <td> <%= data.posts[i].author%> </td>
+                                        <td> <%= data.posts[i].created_at%> </td>
+                                        <td> <%= data.posts[i].updated_at%> </td>
+                                        <td>
+                                            <a href="/admin/post/edit/<%= data.posts[i].id%>" class="btn btn-primary">Edit</a>
+                                            <button class="btn btn-danger post_delete" post_id="<%= data.posts[i].id%>">Delete</button>
+                                        </td>
+                                    </tr>
+                                    <%}%>
+                                <%}%>
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="/static/js/post.js"></script>
+</body>
+</html>
