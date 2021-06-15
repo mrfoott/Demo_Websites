@@ -7,8 +7,7 @@ const post_md = require("../models/post")
 router.use("/admin", require(__dirname + "/admin.js"));
 router.use("/blog", require(__dirname + "/blog.js"));
 router.use("/updateuserinfo", require(__dirname + "/updateuserinfo.js"))
-
-router
+router.use("/updatepassword", require(__dirname + "/updatepassword.js"))
 
 router.get("/chat", function(req, res){
     res.render("chat");

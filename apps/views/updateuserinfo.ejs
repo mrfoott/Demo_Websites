@@ -3676,7 +3676,7 @@
 														</a>
 													</div>
 													<div class="navi-item mb-2">
-														<a href="/static/custom/apps/profile/profile-1/change-password.html" class="navi-link py-4">
+														<a href="./updatepassword.ejs" class="navi-link py-4">
 															<span class="navi-icon mr-2">
 																<span class="svg-icon">
 																	<!--begin::Svg Icon | path:assets/media/svg/icons/Communication/Shield-user.svg-->
@@ -3691,7 +3691,7 @@
 																	<!--end::Svg Icon-->
 																</span>
 															</span>
-															<span class="navi-text font-size-lg">Change Passwort</span>
+															<span class="navi-text font-size-lg">Change Password</span>
 															<span class="navi-label">
 																<span class="label label-light-danger label-rounded font-weight-bold">5</span>
 															</span>
@@ -5250,7 +5250,6 @@
                 data: $(this).serialize(),
                 success: function( data, textStatus, jQxhr ){
                     window.location.href = '/admin/signin';
-
                 },
                 error: function( jqXhr, textStatus, errorThrown ){
                     console.log( errorThrown );
