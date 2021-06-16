@@ -5213,10 +5213,13 @@
         </script>
 
         <script>
-            function myFunction() {
-            var btn = document.createElement("BUTTON");
-            btn.innerHTML = "CLICK ME";
-            document.body.appendChild(btn);
+        function myFunction() {
+            let div_new = document.createElement("DIV");
+            div_new.id = "myDiv" + Date.now() // for the movement needs a unique ID
+            div_new.style = "position: absolute; z-index: 9; background-color: #f1f1f1; border: 1px solid #d3d3d3; text-align: center;"
+            div_new.innerHTML = '<div id="mydivheader" style="padding: 10px; cursor: move; z-index: 10; background-color: #2196F3; color: #fff;">Click here to move</div><p>Move</p><p>this</p><p>DIV</p>';
+            dragElement(div_new);
+            document.body.appendChild(div_new);
         }
     </script>
 	</body>
