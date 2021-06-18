@@ -5235,7 +5235,7 @@
     			let div_new = document.createElement("DIV");
     			div_new.id = "myDiv" + Date.now() // for the movement needs a unique ID
     			div_new.style = "position: absolute; z-index: 9; background-color: #f1f1f1; border: 1px solid #d3d3d3; text-align: center; top: 100px; left: 100px;";
-    			div_new.innerHTML = '<div id="' + div_new.id + 'header" style="padding: 10px; cursor: move; z-index: 10; background-color: #007196; color: #fff;">Click here to move <button  onclick="removeDiv(&quot;'+div_new.id+'&quot;)">X</button></div><p>Move</p><p>this</p><p>DIV</p>';
+    			div_new.innerHTML = '<div id="' + div_new.id + 'header" style="padding: 10px; cursor: move; z-index: 10; background-color: #007196; color: #fff;">Click here to move <button  onclick="removeDiv(&quot;'+div_new.id+'&quot;)">X</button></div><textarea name="" id="" cols="30" rows="10" wrap="hard" style="box-sizing: border-box; height: 100%; width: 100%; resize: none; background-color: #ffa800;">asfasfasf</textarea>';
     			document.body.appendChild(div_new);
     			dragElement(div_new);
     			$( div_new ).resizable();
