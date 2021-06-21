@@ -22,25 +22,7 @@
 		<!--end::Global Theme Styles-->
 		<!--begin::Layout Themes(used by all pages)-->
 		<!--end::Layout Themes-->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
-		<style>
-			#mydiv {
-        	position: absolute;
-        	z-index: 9;
-        	background-color: #f1f1f1;
-        	border: 1px solid #d3d3d3;
-        	text-align: center;
-        	}
-
-        	#mydivheader {
-        	padding: 10px;
-        	cursor: move;
-        	z-index: 10;
-        	background-color: #007196;
-        	color: #fff;
-        	}
-		</style>
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -3342,16 +3324,8 @@
 						<!--begin::Entry-->
 						<div class="d-flex flex-column-fluid">
 							<!--begin::Container-->
-							<div id="testbody" class="container">
-								<div id="mydiv">
-                                    <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                                    <div id="mydivheader">
-                                        Click here to move
-                                        <button onclick="removeDiv('mydiv')">X</button>
-                                    </div>
-                                    <textarea name="" id="" cols="30" rows="10" wrap="hard" style="box-sizing: border-box; height: 100%; width: 100%; resize: none; background-color: #ffa800;">asfasfasf</textarea>
-                                </div>
-                                <button onclick="myFunction()">Thêm thẻ</button>
+							<div class="container">
+								<p>Page content goes here...</p>
 							</div>
 							<!--end::Container-->
 						</div>
@@ -5176,112 +5150,6 @@
 		<!--begin::Page Scripts(used by this page)-->
 		<script src="assets/js/pages/widgets.js"></script>
 		<!--end::Page Scripts-->
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script>
-            $( function() {
-                $( "#mydiv" ).resizable();
-            });
-        </script>
-
-        <script>
-            // Make the DIV element draggable:
-            dragElement(document.getElementById("mydiv"));
-
-            function dragElement(elmnt) {
-                var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                if (document.getElementById(elmnt.id + "header")) {
-                    // if present, the header is where you move the DIV from:
-                    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-                } else {
-                    // otherwise, move the DIV from anywhere inside the DIV:
-                    elmnt.onmousedown = dragMouseDown;
-                }
-            
-                function dragMouseDown(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    // get the mouse cursor position at startup:
-                    pos3 = e.clientX;
-                    pos4 = e.clientY;
-                    document.onmouseup = closeDragElement;
-                    // call a function whenever the cursor moves:
-                    document.onmousemove = elementDrag;
-                }
-            
-                function elementDrag(e) {
-                    e = e || window.event;
-                    e.preventDefault();
-                    // calculate the new cursor position:
-                    pos1 = pos3 - e.clientX;
-                    pos2 = pos4 - e.clientY;
-                    pos3 = e.clientX;
-                    pos4 = e.clientY;
-                    // set the element's new position:
-                    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                }
-            
-                function closeDragElement() {
-                    // stop moving when mouse button is released:
-                    document.onmouseup = null;
-                    document.onmousemove = null;
-                }
-            }
-        </script>
-
-        <script>
-            function myFunction() {
-    			let div_new = document.createElement("DIV");
-    			div_new.id = "myDiv" + Date.now() // for the movement needs a unique ID
-    			div_new.style = "position: absolute; z-index: 9; background-color: #f1f1f1; border: 1px solid #d3d3d3; text-align: center; top: 100px; left: 100px;";
-    			div_new.innerHTML = '<div id="' + div_new.id + 'header" style="padding: 10px; cursor: move; z-index: 10; background-color: #007196; color: #fff;">Click here to move <button  onclick="removeDiv(&quot;'+div_new.id+'&quot;)">X</button></div><textarea name="" id="" cols="30" rows="10" wrap="hard" style="box-sizing: border-box; height: 100%; width: 100%; resize: none; background-color: #ffa800;">asfasfasf</textarea>';
-    			document.body.appendChild(div_new);
-    			dragElement(div_new);
-    			$( div_new ).resizable();
-			}
-        </script>
-
-		<script>
-			if (document.getElementById(elmnt.id + "header")) {
-    			// if present, the header is where you move the DIV from:
-    			document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-			} else {
-    			// otherwise, move the DIV from anywhere inside the DIV:
-    			elmnt.onmousedown = dragMouseDown;
-			}
-		</script>
-
-        <script>
-            function removeDiv(myDiv) {
-                const div = document.getElementById(myDiv);
-                if (div) {
-                    div.remove();
-                }
-            }
-        </script>
-
-		// Script to move content from one DIV to another one
-		<script>
-			// Keeps track of the drop target that the mouse is currently hovering over
-			let dropTarget = null;
-
-			function handleDropTargeting(element) {
-			    // Add a mouseenter listener - when the mouse enters the target element, this will be called
-			    element.addEventListener('mouseenter', () => {
-			        dropTarget = element;
-			    });
-			
-			    // Add a mouseleave listener - when the mouse leaves the target element, this will be called
-			    element.addEventListener('mouseleave', () => {
-			        dropTarget = null;
-			    });
-			}
-
-			// Now apply it to the two divs:
-			handleDropTargeting(document.getElementById(div_new));
-			handleDropTargeting(document.getElementById(myDiv));
-		</script>
 	</body>
 	<!--end::Body-->
 </html>

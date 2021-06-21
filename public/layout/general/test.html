@@ -1,81 +1,41 @@
-<html>
-    <script>
-        function load() {
-            // document.getElementById('element_1').innerHTML = "Hello"
-            // document.getElementById('element_2').innerHTML = "World"
-
-            dragElement(document.getElementById("mydiv"))
-        }
-
-        // Make the DIV element draggable:
-        //ragElement(document.getElementById("mydiv"));
-
-        function dragElement(elmnt) {
-            var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-            if (document.getElementById(elmnt.id + "header")) {
-                // if present, the header is where you move the DIV from:
-                document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-            } else {
-                // otherwise, move the DIV from anywhere inside the DIV:
-                elmnt.onmousedown = dragMouseDown;
-            }
-
-            function dragMouseDown(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // get the mouse cursor position at startup:
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                document.onmouseup = closeDragElement;
-                // call a function whenever the cursor moves:
-                document.onmousemove = elementDrag;
-            }
-
-            function elementDrag(e) {
-                e = e || window.event;
-                e.preventDefault();
-                // calculate the new cursor position:
-                pos1 = pos3 - e.clientX;
-                pos2 = pos4 - e.clientY;
-                pos3 = e.clientX;
-                pos4 = e.clientY;
-                // set the element's new position:
-                elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-            }
-
-            function closeDragElement() {
-                // stop moving when mouse button is released:
-                document.onmouseup = null;
-                document.onmousemove = null;
-            }
-        }
-    </script>
-    <style>
-        #mydiv {
-        position: absolute;
-        z-index: 9;
-        background-color: #f1f1f1;
-        border: 1px solid #d3d3d3;
-        text-align: center;
-        }
-
-        #mydivheader {
-        padding: 10px;
-        cursor: move;
-        z-index: 10;
-        background-color: #2196F3;
-        color: #fff;
-        }
-    </style>
-<body onload='load()'>
-     <!-- Draggable DIV -->
-    <div id="mydiv" style="resize: both; overflow: auto;">
-        <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-        <div id="mydivheader">Click here to move</div>
-        <p>Move</p>
-        <p>this</p>
-        <p>DIV</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1">
+        <span id="content">Some test content</span>
     </div>
+        <span>
+            asdgsdgsdsdg
+        </span>
+    <div id="div2">
+    
+    </div>
+    
+    <script>
+        // Keeps track of the drop target that the mouse is currently hovering over
+        let dropTarget = null;
+
+        function handleDropTargeting(element) {
+            // Add a mouseover listener - when the mouse enters the target element, this will be called
+            element.addEventListener('mouseenter', () => {
+                dropTarget = element;
+            });
+        
+            // Add a mouseout listener - when the mouse leaves the target element, this will be called
+            element.addEventListener('mouseleave', () => {
+                dropTarget = null;
+            });
+        }
+
+        // Now apply it to the two divs:
+        handleDropTargeting(document.getElementById('div1'));
+        handleDropTargeting(document.getElementById('div2'));
+    </script>
 </body>
 </html>
