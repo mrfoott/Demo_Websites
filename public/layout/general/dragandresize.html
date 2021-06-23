@@ -40,6 +40,14 @@
         	background-color: #007196;
         	color: #fff;
         	}
+
+			#draggable { 
+				width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; 
+			}
+
+			#droppable { 
+				width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; 
+			}
 		</style>
 	</head>
 	<!--end::Head-->
@@ -3349,15 +3357,17 @@
                                         Click here to move
                                         <button onclick="removeDiv('mydiv')">X</button>
                                     </div>
-                                    <!-- <textarea name="" id="textarea1" cols="30" rows="10" wrap="hard" style="box-sizing: border-box; height: 100%; width: 100%; resize: none; background-color: #ffa800;">asfasfasf</textarea> -->
-									<span>
-										asfasfaswf
-									</span><br>
-									<span id="span1">
-										asfgasgasgasgasdg
-									</span>
+                                    <textarea name="" id="textarea1" cols="30" rows="10" wrap="hard" style="box-sizing: border-box; height: 100%; width: 100%; resize: none; background-color: #ffa800;">asfasfasf</textarea>
                                 </div>
                                 <button onclick="myFunction()">Thêm thẻ</button>
+
+								<div id="draggable" class="ui-widget-content">
+									<p>Drag me to my target</p>
+								</div>
+								   
+								<div id="droppable" class="ui-widget-header">
+									<p>Drop here</p>
+								</div>
 							</div>
 							<!--end::Container-->
 						</div>
@@ -5267,8 +5277,8 @@
             }
         </script>
 
-		// Script to move content from one DIV to another one
-		<script>
+		<!-- Test script to move content from one DIV to another one -->
+		<!-- <script>
 			// Keeps track of the drop target that the mouse is currently hovering over
 			let dropTarget = null;
 
@@ -5287,7 +5297,25 @@
 			// Now apply it to the two divs:
 			handleDropTargeting(document.getElementById(div_new));
 			handleDropTargeting(document.getElementById(span1));
+		</script> -->
+
+		<!-- Test script for copying, moving DIV content  -->
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+		$( function() {
+    		$( "#draggable" ).draggable();
+    		$( "#droppable" ).droppable({
+    			drop: function( event, ui ) {
+    				$( this )
+    		      	.addClass( "ui-state-highlight" )
+    		      	.find( "p" )
+    		        .html( "Dropped!" );
+    		  	}
+    		});
+		} );
 		</script>
+		
 	</body>
 	<!--end::Body-->
 </html>
